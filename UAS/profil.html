@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Pengguna</title>
+    <link rel="stylesheet" href="style_profil.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="beranda.html">Beranda</a></li>
+                <li><a href="transaksi.html">Transaksi</a></li>
+                <li><a href="profil.html" class="active">Profil</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="profil">
+            <h1>Profil Pengguna</h1>
+
+            <div class="profil-container">
+                <div class="foto-profil">
+                    <img src="foto_profil.png" alt="Foto Profil" id="foto-profil">
+                    <button id="ubah-foto">Ubah Foto</button>
+                </div>
+
+                <div class="info-profil">
+                    <p>Nama: <span id="nama-pengguna">John Doe</span></p>
+                    <p>Email: <span id="email-pengguna">johndoe@example.com</span></p>
+                    <p>Nomor Telepon: <span id="telepon-pengguna">081234567890</span></p>
+                    <p>Alamat: <span id="alamat-pengguna">Jakarta, Indonesia</span></p>
+                    <p>Tanggal Bergabung: <span id="tanggal-bergabung">01 Januari 2023</span></p>
+                    <p>Bio: <span id="bio-pengguna">Pengguna aktif sistem simpan pinjam.</span></p>
+                    <button id="edit-profil">Edit Profil</button>
+                </div>
+            </div>
+
+            <form id="edit-form" style="display: none;">
+                <h2>Edit Profil</h2>
+                <label for="edit-nama">Nama:</label>
+                <input type="text" id="edit-nama" value="John Doe">
+
+                <label for="edit-email">Email:</label>
+                <input type="email" id="edit-email" value="johndoe@example.com">
+
+                <label for="edit-telepon">Nomor Telepon:</label>
+                <input type="tel" id="edit-telepon" value="081234567890">
+
+                <label for="edit-alamat">Alamat:</label>
+                <textarea id="edit-alamat" rows="3">Jakarta, Indonesia</textarea>
+
+                <label for="edit-bio">Bio:</label>
+                <textarea id="edit-bio" rows="3">Pengguna aktif sistem simpan pinjam.</textarea>
+
+                <button type="submit">Simpan</button>
+                <button type="button" id="batal-edit">Batal</button>
+            </form>
+        </section>
+
+        <section id="aktivitas">
+            <h2>Aktivitas Terbaru</h2>
+            <ul>
+                <li>Login terakhir: 08 Januari 2025</li>
+                <li>Mengubah profil pada: 01 Januari 2025</li>
+                <li>Menambahkan transaksi: Simpan - Rp 1.000.000</li>
+                <li>Memperbarui foto profil: 05 Januari 2025</li>
+            </ul>
+        </section>
+
+        <section id="keamanan">
+            <h2>Keamanan Akun</h2>
+            <p>Untuk menjaga keamanan akun Anda, silakan lakukan:</p>
+            <ul>
+                <li>Ganti kata sandi secara berkala.</li>
+                <li>Aktifkan autentikasi dua faktor (2FA).</li>
+            </ul>
+            <button id="ubah-sandi">Ubah Kata Sandi</button>
+
+            <form id="ubah-sandi-form" style="display: none;">
+                <h2>Ubah Kata Sandi</h2>
+                <label for="password-lama">Kata Sandi Lama:</label>
+                <input type="password" id="password-lama">
+
+                <label for="password-baru">Kata Sandi Baru:</label>
+                <input type="password" id="password-baru">
+
+                <label for="konfirmasi-password">Konfirmasi Kata Sandi Baru:</label>
+                <input type="password" id="konfirmasi-password">
+
+                <button type="submit">Simpan</button>
+                <button type="button" id="batal-ubah-sandi">Batal</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sistem Simpan Pinjam. </p>
+    </footer>
+    <script>
+        updateStatistik();
+
+const editButton = document.getElementById('edit-profil');
+const editForm = document.getElementById('edit-form');
+const batalButton = document.getElementById('batal-edit');
+
+const ubahSandiButton = document.getElementById('ubah-sandi');
+const ubahSandiForm = document.getElementById('ubah-sandi-form');
+const batalUbahSandiButton = document.getElementById('batal-ubah-sandi');
+
+editButton.addEventListener('click', () => {
+    editForm.style.display = 'block';
+});
+
+batalButton.addEventListener('click', () => {
+    editForm.style.display = 'none';
+});
+
+ubahSandiButton.addEventListener('click', () => {
+    ubahSandiForm.style.display = 'block';
+});
+
+batalUbahSandiButton.addEventListener('click', () => {
+    ubahSandiForm.style.display = 'none';
+});
+    </script>
+</body>
+</html>

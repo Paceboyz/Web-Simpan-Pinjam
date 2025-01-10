@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaksi</title>
+    <link rel="stylesheet" href="style_transaksi.css">
+    <script defer src="script_transaksi.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="beranda.html">Beranda</a></li>
+                <li><a href="transaksi.html" class="active">Transaksi</a></li>
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="transaksi">
+            <h1><span class="highlight">Halaman Transaksi</span></h1>
+            <p>Kelola transaksi Anda dengan mudah dan cepat.</p>
+
+            <form id="transaksi-form">
+                <label for="jenis">Jenis Transaksi:</label>
+                <select id="jenis" required>
+                    <option value="">Pilih jenis transaksi</option>
+                    <option value="simpan">Simpan</option>
+                    <option value="pinjam">Pinjam</option>
+                </select>
+
+                <label for="jumlah">Jumlah (Rp):</label>
+                <input type="number" id="jumlah" min="1" required>
+
+                <label for="keterangan">Keterangan:</label>
+                <textarea id="keterangan" rows="3" placeholder="Tambahkan keterangan..." required></textarea>
+
+                <button type="submit">Kirim</button>
+            </form>
+
+            <div id="riwayat-transaksi">
+                <h2>Riwayat Transaksi</h2>
+                <ul id="transaksi-list">
+                    <li><span>Simpan</span> - Rp 1.000.000 - <span>01/01/2025</span></li>
+                    <li><span>Pinjam</span> - Rp 500.000 - <span>02/01/2025</span></li>
+                    <li><span>Simpan</span> - Rp 750.000 - <span>03/01/2025</span></li>
+                    <li><span>Pinjam</span> - Rp 300.000 - <span>04/01/2025</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="statistik">
+            <h2>Statistik Transaksi</h2>
+            <div class="statistik-container">
+                <div class="statistik-item">
+                    <h3>Total Simpan</h3>
+                    <p id="total-simpan">Rp 2.750.000</p>
+                </div>
+                <div class="statistik-item">
+                    <h3>Total Pinjam</h3>
+                    <p id="total-pinjam">Rp 1.300.000</p>
+                </div>
+                <div class="statistik-item">
+                    <h3>Saldo</h3>
+                    <p id="saldo">Rp 1.450.000</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="bantuan">
+            <h2>Bantuan</h2>
+            <p>Jika Anda membutuhkan bantuan terkait transaksi, silakan hubungi tim kami melalui:</p>
+            <ul>
+                <li>Email: <a href="fafif6429@gmail.com">fafif6429@gmail.com</a></li>
+                <li>Telepon: +628889094430</li>
+                <li>Live Chat: <a href="https://mail.google.com/mail/u/0/#inbox">Klik di sini</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sistem Simpan Pinjam.</p>
+    </footer>
+    <script>
+        const form = document.getElementById('transaksi-form');
+        const transaksiList = document.getElementById('transaksi-list');
+        const totalSimpanEl = document.getElementById('total-simpan');
+        const totalPinjamEl = document.getElementById('total-pinjam');
+        const saldoEl = document.getElementById('saldo');
+
+        let totalSimpan = 2750000;
+        let totalPinjam = 1300000;
+
+        function updateStatistik() {
+            const saldo = totalSimpan - totalPinjam;
+            totalSimpanEl.textContent = `Rp ${totalSimpan.toLocaleString()}`;
+            totalPinjamEl.textContent = `Rp ${totalPinjam.toLocaleString()}`;
+            saldoEl.textContent = `Rp ${saldo.toLocaleString()}`;
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const jenis = document.getElementById('jenis').value;
+            const jumlah = parseInt(document.getElementById('jumlah').value);
+            const keterangan = document.getElementById('keterangan').value;
+
+            if (!jenis || !jumlah || !keterangan) {
+                alert('Semua bidang harus diisi!');
+                return;
+            }
+
+            const tanggal = new Date().toLocaleDateString('id-ID');
+            const newItem = document.createElement('li');
+            newItem.innerHTML = `<span>${jenis.charAt(0).toUpperCase() + jenis.slice(1)}</span> - Rp ${jumlah.toLocaleString()} - <span>${tanggal}</span>`;
+            transaksiList.appendChild(newItem);
+
+            if (jenis === 'simpan') {
+                totalSimpan += jumlah;
+            } else if (jenis === 'pinjam') {
+                totalPinjam += jumlah;
+            }
+
+            updateStatistik();
+            form.reset();
+        });
+    </script>
+</body>
+</html>

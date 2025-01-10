@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - Sistem Simpan Pinjam</title>
+    <link href="style_daftar.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        Sistem Simpan Pinjam - Daftar
+    </header>
+    <main>
+        <h2>Buat Akun Baru</h2>
+        <form action="beranda.html" method="POST">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Masukkan username Anda" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Masukkan password Anda" required>
+
+            <label for="confirm-password">Konfirmasi Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi password Anda" required>
+
+            <button a href="beranda.html" class="cta-button">Daftar</a></button>
+            <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
+        </form>
+    </main>
+    <footer>
+        © 2025 Sistem Simpan Pinjam. Dibuat dengan <span class="highlight">cinta</span>.
+    </footer>
+    <script>
+        function validateForm(event) {
+            event.preventDefault(); // Mencegah pengiriman form secara default
+            
+            document.getElementById('register-form').submit();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (username.length < 3) {
+                alert('Paceboyz');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('fafif6429@gmail.com');
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('Pace1234');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Pace1234');
+                return;
+            }
+
+            alert('Pendaftaran berhasil!');
+            document.getElementById('register-form').submit(); // Mengirim form setelah validasi berhasil
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda</title>
+    <link rel="stylesheet" href="style_beranda.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="beranda.html" class="active">Beranda</a></li>
+                <li><a href="transaksi.html">Transaksi</a></li>
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="welcome">
+            <div class="content">
+                <h1>Selamat Datang di Sistem Simpan Pinjam</h1>
+                <p>Kelola akun dan transaksi Anda dengan mudah dan aman.</p>
+                <a href="transaksi.html" class="cta-button">Mulai Transaksi</a>
+            </div>
+            <div class="image">
+                <img src="logo.webp" alt="Sistem Simpan Pinjam" width="250px" height="250px">
+            </div>
+        </section>
+
+        <section id="features">
+            <h2>Kenapa Memilih Kami?</h2>
+            <div class="feature-cards">
+                <div class="card" data-feature="Keamanan">
+                    <h3>Keamanan</h3>
+                    <p>Data Anda terlindungi dengan sistem keamanan tingkat tinggi.</p>
+                </div>
+                <div class="card" data-feature="Fleksibilitas">
+                    <h3>Fleksibilitas</h3>
+                    <p>Transaksi kapan saja dan di mana saja sesuai kebutuhan Anda.</p>
+                </div>
+                <div class="card" data-feature="Kemudahan">
+                    <h3>Kemudahan</h3>
+                    <p>Akses mudah dengan antarmuka yang sederhana dan ramah pengguna.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <h2>Testimoni Pengguna</h2>
+            <div class="testimonials">
+                <blockquote data-user="Budi">
+                    <p>"Sistem Simpan Pinjam ini sangat membantu saya mengelola keuangan dengan mudah dan cepat."</p>
+                    <cite>– Budi, Jakarta</cite>
+                </blockquote>
+                <blockquote data-user="Siti">
+                    <p>"Antarmuka yang sederhana membuat saya nyaman menggunakan aplikasi ini."</p>
+                    <cite>– Siti, Bandung</cite>
+                </blockquote>
+                <blockquote data-user="Andi">
+                    <p>"Layanan pelanggan yang responsif dan transaksi yang aman membuat saya merasa tenang."</p>
+                    <cite>– Andi, Surabaya</cite>
+                </blockquote>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>Galeri</h2>
+            <div class="gallery">
+                <figure>
+                    <img src="foto_1.jpg" alt="Gambar 1" data-image="gallery1">
+                    <figcaption>Rapat Anggota Tahunan</figcaption>
+                </figure>
+                <figure>
+                    <img src="foto2.jpg" alt="Gambar 2" data-image="gallery2">
+                    <figcaption>Perayaan Hari Kemerdekaan</figcaption>
+                </figure>
+                <figure>
+                    <img src="foto3.jpg" alt="Gambar 3" data-image="gallery3">
+                    <figcaption>Pelatihan Kepemimpinan</figcaption>
+                </figure>
+            </div>
+        </section>        
+
+        <section id="faq">
+            <h2>FAQ</h2>
+            <div class="faq-item">
+                <h3>Apa itu Sistem Simpan Pinjam?</h3>
+                <p>Sistem ini adalah platform untuk membantu Anda mengelola simpanan dan pinjaman secara online.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Bagaimana cara memulai transaksi?</h3>
+                <p>Anda dapat memulai transaksi dengan klik tombol "Mulai Transaksi" di halaman ini.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Apakah data saya aman?</h3>
+                <p>Tentu saja, kami menggunakan enkripsi tingkat tinggi untuk melindungi data Anda.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sistem Simpan Pinjam.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Interactivity for "Mulai Transaksi" button
+            const ctaButton = document.querySelector('.cta-button');
+
+            ctaButton.addEventListener('mouseover', () => {
+                ctaButton.style.backgroundColor = '#ffd700';
+                ctaButton.style.color = '#f2ff00';
+            });
+
+            ctaButton.addEventListener('mouseout', () => {
+                ctaButton.style.backgroundColor = '#007bff';
+                ctaButton.style.color = '#fff';
+            });
+
+            ctaButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                alert('Selamat datang! Anda akan diarahkan ke halaman transaksi.');
+                window.location.href = 'transaksi.html';
+            });
+
+            // Feature card hover effects
+            const featureCards = document.querySelectorAll('.card');
+
+            featureCards.forEach(card => {
+                card.addEventListener('mouseover', () => {
+                    card.style.transform = 'scale(1.05)';
+                    card.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+                });
+
+                card.addEventListener('mouseout', () => {
+                    card.style.transform = 'scale(1)';
+                    card.style.boxShadow = 'none';
+                });
+
+                card.addEventListener('click', () => {
+                    alert(`Anda memilih fitur: ${card.dataset.feature}`);
+                });
+            });
+
+            // Testimonials click interaction
+            const testimonials = document.querySelectorAll('.testimonials blockquote');
+
+            testimonials.forEach(quote => {
+                quote.addEventListener('click', () => {
+                    alert(`Anda membaca testimoni dari: ${quote.dataset.user}`);
+                });
+            });
+
+            // Gallery click interaction
+            const galleryImages = document.querySelectorAll('.gallery img');
+
+            galleryImages.forEach(image => {
+                image.addEventListener('click', () => {
+                    alert(`Anda memilih gambar: ${image.alt}`);
+                });
+            });
+
+            // FAQ toggle visibility
+            const faqItems = document.querySelectorAll('.faq-item h3');
+
+            faqItems.forEach(faq => {
+                faq.addEventListener('click', () => {
+                    const answer = faq.nextElementSibling;
+                    const isVisible = answer.style.display === 'block';
+                    answer.style.display = isVisible ? 'none' : 'block';
+
+                    faq.style.color = isVisible ? '#333' : '#007bff';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

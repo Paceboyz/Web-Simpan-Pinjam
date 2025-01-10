@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Halaman login untuk sistem simpan pinjam yang aman dan mudah digunakan.">
+    <title>Login</title>
+    <link rel="stylesheet" href="style_login.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>Mari mulai perjalanan Anda bersama kami</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="login-container">
+            <form id="login-form">
+                <h2>Login</h2>
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Masukkan username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Masukkan password" required>
+                </div>
+
+                <button a href="beranda.html" class="cta-button">Login</a></button>
+
+                <p class="register-link">Belum punya akun? <a href="daftar_disini.html">Daftar di sini</a></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sistem Simpan Pinjam.</p>
+    </footer>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === 'admin' && password === '12345') {
+        alert(`Login berhasil! Selamat datang, ${username}!`);
+        window.location.href = 'beranda.html';
+    } else {
+        alert('Login gagal! Username atau password salah.');
+    }
+});
+    </script>
+</body>
+</html>
